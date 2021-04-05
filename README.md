@@ -60,13 +60,13 @@ crontab -e
 **James Kayser** - *Initial work* - [kayserj](https://github.com/kayserj)
 
 ### Special Thanks. 
-Mark Sanborn
+Mark Sanborn.  
 https://www.marksanborn.net/howto/use-rsync-for-daily-weekly-and-full-monthly-backups/  
 
 and   
 
 
-World Backup Day 
+World Backup Day.  
 http://www.worldbackupday.com/en/
 
 
