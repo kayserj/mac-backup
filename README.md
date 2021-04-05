@@ -41,6 +41,8 @@ ansible-playbook backup-mac.yml
 
 Once the playbook is executed, it will make sure the destination volume path is valid, the proceed to back up your Dropbox and iCloud data, to the volume specified in the vars section.  It assumes Dropbox and iCloud are installed in their default locations.  If you have not installed Dropbox or iCloud to their default locations, you will need to specify the location in the vars section of the playbook. 
 
+### Details
+The playbook uses the synchronize module to provide rsync capabilities to the daily and weekly backup, and the archive module to compress the data monthly.
 
 ### Built With
 
