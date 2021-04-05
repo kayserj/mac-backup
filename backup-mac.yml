@@ -1,0 +1,70 @@
+---
+- hosts: localhost
+  any_errors_fatal: true
+  gather_facts: true
+
+  vars: 
+    destfolder: '/Volumes/External-HD'  #Path to backup folder location
+    icloud: '~/Library/Mobile Documents/com~apple~CloudDocs'  #Default path to icloud data folder location
+    iphoto: '~/Pictures'  #Default path to iphoto folder location
+    dropbox: '~/Dropbox'  #Default path to Dropbox location
+
+  pre_tasks: 
+
+  - name: Checking External Hard Drive for Connectivity
+    stat: 
+      path: '{{ destfolder }}'
+    register: destpath
+
+  - name: Drive Connectivity Failsafe
+    fail:
+      msg: External Hard Drive Is Not Connected
+    when: not destpath.stat.exists
+
+  tasks:
+
+  - name: Synchronizing iCloud Daily Backup
+    synchronize:
+      src: '{{ icloud }}'
+      dest: '{{ destfolder }}/backup/daily/'
+      delete: yes
+      recursive: yes
+    when: destpath.stat.exists
+
+  - name: Synchronizing iPhotos Daily Backup
+    synchronize:
+      src: '{{ iphoto }}'
+      dest: '{{ destfolder }}/backup/daily/'
+      delete: yes
+      recursive: yes
+    when: destpath.stat.exists
+
+  - name: Synchronizing Dropbox Daily Backup
+    synchronize:
+      src: '{{ dropbox }}'
+      dest: '{{ destfolder }}/backup/daily/'
+      delete: yes
+      recursive: yes
+    when: destpath.stat.exists
+    
+  - name: Synchronizing Friday Weekly Backup
+    synchronize:
+      src: '{{ destfolder }}/backup/daily/'
+      dest: '{{ destfolder }}/backup/weekly/'
+      delete: yes
+      recursive: yes
+    when: (destpath.stat.exists) and (ansible_date_time.weekday == 'Friday')
+
+  - name: Checking For Monthly Backup Directory
+    file:
+      path: '{{ destfolder }}/backup/monthly/'
+      state: directory
+      mode: '0755'
+    when: (destpath.stat.exists) and (ansible_date_time.day == '01')
+
+  - name: Archiving Monthly Backup
+    archive:
+      path: '{{ destfolder }}/backup/daily/'
+      dest: '{{ destfolder }}/backup/monthly/{{ ansible_date_time.month }}_backup.zip'
+      format: zip
+    when: (destpath.stat.exists) and (ansible_date_time.day == '01')
