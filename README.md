@@ -6,7 +6,7 @@ This playbook is a collection of tasks that will perform daily, and weekly backu
 ## History  
 I was recently made aware of "World Backup Day", so I figured I would share the Ansible playbook I use to back up my data, as well as the strategy/reasoning behind why.  
 
- My data is stored in 2 cloud services platforms.  Dropbox, and iCloud (iCloud data drive, and iCloud photo app).  This is the data that I will use on a daily basis.  Adds, moves and changes made to any file within these services will be synchronized/replicated to the cloud, and other participating devices, in near real-time (give or take 10 minutes, but you get the idea).  The more participating devices you have with a full copy of your data, the more redundant, and resilient you will be.  I use this method because it meets several good backup practice criteria. 
+My data is stored in 2 cloud services platforms.  Dropbox, and iCloud (iCloud data drive, and iCloud photo app).  This is the data that I will use on a daily basis.  Adds, moves and changes made to any file within these services will be synchronized/replicated to the cloud, and other participating devices, in near real-time (give or take 10 minutes, but you get the idea).  The more participating devices you have with a full copy of your data, the more redundant, and resilient you will be.  I use this method because it meets several good backup practice criteria. 
 
 ## Data Usage and Backup Criteria
 
@@ -42,7 +42,7 @@ ansible-playbook backup-mac.yml
 Once the playbook is executed, it will make sure the destination volume path is valid, then proceed to back up your Dropbox and iCloud data, to the volume specified in the vars section.  It assumes Dropbox and iCloud are installed in their default locations.  If you have not installed Dropbox or iCloud to their default locations, you will need to specify the location in the vars section of the playbook. 
 
 ### Details
-The playbook uses the synchronize module to provide rsync capabilities to the daily and weekly backup, and the archive module to compress the data monthly.  As-is, you have to run the playbook manually.  To automate the process, use crontab
+The playbook uses the synchronize module to provide rsync capabilities to the daily and weekly backup, and the archive module to compress the data monthly.  As-is, you have to run the playbook manually.  To automate the process, use a cronjob.  
 
 ```
 crontab -e
@@ -60,6 +60,13 @@ crontab -e
 **James Kayser** - *Initial work* - [kayserj](https://github.com/kayserj)
 
 ### Special Thanks. 
-World Backup Day
+Mark Sanborn
+https://www.marksanborn.net/howto/use-rsync-for-daily-weekly-and-full-monthly-backups/  
+
+and   
+
+
+World Backup Day 
+http://www.worldbackupday.com/en/
 
 
