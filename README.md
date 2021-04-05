@@ -39,10 +39,16 @@ Download the playbook to your MacOS device that is also running ansible, from wi
 ansible-playbook backup-mac.yml
 ```
 
-Once the playbook is executed, it will make sure the destination volume path is valid, the proceed to back up your Dropbox and iCloud data, to the volume specified in the vars section.  It assumes Dropbox and iCloud are installed in their default locations.  If you have not installed Dropbox or iCloud to their default locations, you will need to specify the location in the vars section of the playbook. 
+Once the playbook is executed, it will make sure the destination volume path is valid, then proceed to back up your Dropbox and iCloud data, to the volume specified in the vars section.  It assumes Dropbox and iCloud are installed in their default locations.  If you have not installed Dropbox or iCloud to their default locations, you will need to specify the location in the vars section of the playbook. 
 
 ### Details
-The playbook uses the synchronize module to provide rsync capabilities to the daily and weekly backup, and the archive module to compress the data monthly.
+The playbook uses the synchronize module to provide rsync capabilities to the daily and weekly backup, and the archive module to compress the data monthly.  As-is, you have to run the playbook manually.  To automate the process, use crontab
+
+```
+crontab -e
+
+30 18 * * * ansible-playbook backup-mac.yml
+```
 
 ### Built With
 
@@ -53,7 +59,7 @@ The playbook uses the synchronize module to provide rsync capabilities to the da
 
 **James Kayser** - *Initial work* - [kayserj](https://github.com/kayserj)
 
-### Special Thanks  
+### Special Thanks. 
 World Backup Day
 
 
