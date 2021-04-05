@@ -1,4 +1,4 @@
-# Mac Backup Ansible Playbook  
+# Mac Backup Ansible Playbook
 This playbook is a collection of tasks that will perform daily, and weekly backups, as well as montly archiving of certain cloud file services on your MacOS device.
 
 ## History
