@@ -32,6 +32,8 @@
       delete: yes
       recursive: yes
     loop: '{{ app_folders }}'
+    loop_control: 
+      label: '{{ item.name }}'
     when: destpath.stat.exists
 
   - name: Synchronizing Friday Weekly Backup

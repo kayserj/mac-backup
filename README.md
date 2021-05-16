@@ -6,7 +6,7 @@ This playbook is a collection of tasks that will perform daily, and weekly backu
 ## History  
 I was recently made aware of "World Backup Day", so I figured I would share the Ansible playbook I use to back up my data, as well as the strategy/reasoning behind why.  
 
-My data is stored in 2 cloud services platforms.  Dropbox, and iCloud (iCloud data drive, and iCloud photo app).  This is the data that I will use on a daily basis.  Adds, moves and changes made to any file within these services will be synchronized/replicated to the cloud, and other participating devices, in near real-time (give or take 10 minutes, but you get the idea).  The more participating devices you have with a full copy of your data, the more redundant, and resilient you will be.  I use this method because it meets several good backup practice criteria. 
+My data is stored in 3 cloud services platforms.  Github, Dropbox, and iCloud (iCloud data drive, and iCloud photo app).  This is the data that I will use on a daily basis.  Adds, moves and changes made to any file within these services will be synchronized/replicated to the cloud, and other participating devices, in near real-time (give or take 10 minutes, but you get the idea).  The more participating devices you have with a full copy of your data, the more redundant, and resilient you will be.  I use this method because it meets several good backup practice criteria. 
 
 ## Data Usage and Backup Criteria
 
