@@ -4,16 +4,16 @@
   gather_facts: true
 
   vars: 
-    destfolder: '/Volumes/External-HD'  #Path to backup folder location
+    destfolder: '/Volumes/Synology-iSCSI/'  #Path to backup folder location
     app_folders:
-      - { name: 'icloud', src_path: '~/Library/Mobile Documents/com~apple~CloudDocs' }  #Default path to icloud data folder location
+      - { name: 'icloud', src_path: '~/Library/Mobile\ Documents/com~apple~CloudDocs/' }  #Default path to icloud data folder location
       - { name: 'iphoto', src_path: '~/Pictures' }  #Default path to iphoto folder location
       - { name: 'dropbox', src_path: '~/Dropbox' } #Default path to Dropbox location
       - { name: 'github', src_path: '~/Documents/Github' } #Github location
 
   pre_tasks: 
 
-  - name: Checking External Hard Drive for Connectivity
+  - name: Checking for External Drive Connectivity
     stat: 
       path: '{{ destfolder }}'
     register: destpath
