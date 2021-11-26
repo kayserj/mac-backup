@@ -6,10 +6,10 @@
   vars: 
     destfolder: '/Volumes/Synology-iSCSI/'  #Path to backup folder location
     app_folders:
-      - { name: 'icloud', src_path: '~/Library/Mobile\ Documents/com~apple~CloudDocs/' }  #Default path to icloud data folder location
-      - { name: 'iphoto', src_path: '~/Pictures' }  #Default path to iphoto folder location
-      - { name: 'dropbox', src_path: '~/Dropbox' } #Default path to Dropbox location
-      - { name: 'github', src_path: '~/Documents/Github' } #Github location
+      - { name: 'icloud', dst_path: 'icloud', src_path: '~/Library/Mobile\ Documents/com~apple~CloudDocs/' }  #Default path to icloud data folder location
+      - { name: 'iphoto', dst_path: 'iphoto', src_path: '~/Pictures' }  #Default path to iphoto folder location
+      - { name: 'dropbox', dst_path: 'dropbox', src_path: '~/Dropbox' } #Default path to Dropbox location
+      - { name: 'github', dst_path: 'github', src_path: '~/Documents/Github' } #Github location
 
   pre_tasks: 
 
@@ -28,7 +28,7 @@
   - name: Synchronizing Daily Backup
     synchronize:
       src: '{{ item.src_path }}'
-      dest: '{{ destfolder }}/backup/daily/'
+      dest: '{{ destfolder }}/backup/daily/{{ item.dst_path }}'
       delete: yes
       recursive: yes
     loop: '{{ app_folders }}'
