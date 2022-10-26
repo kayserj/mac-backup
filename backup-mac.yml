@@ -6,7 +6,7 @@
   vars: 
     destfolder: '/Volumes/Synology-iSCSI/'  #Path to backup folder location
     app_folders:
-      - { name: 'icloud', dst_path: 'icloud', src_path: '~/Library/Mobile\ Documents/com~apple~CloudDocs/' }  #Default path to icloud data folder location
+      - { name: 'icloud', dst_path: 'icloud', src_path: '~/Library/Mobile Documents/com~apple~CloudDocs/' }  #Default path to icloud data folder location
       - { name: 'iphoto', dst_path: 'iphoto', src_path: '~/Pictures' }  #Default path to iphoto folder location
       - { name: 'dropbox', dst_path: 'dropbox', src_path: '~/Dropbox' } #Default path to Dropbox location
       - { name: 'github', dst_path: 'github', src_path: '~/Documents/Github' } #Github location
