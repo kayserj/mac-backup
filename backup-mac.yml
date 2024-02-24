@@ -4,7 +4,7 @@
   gather_facts: true
 
   vars: 
-    destfolder: '/Volumes/Synology-iSCSI/'  #Path to backup folder location
+    destfolder: '/Volumes/RemoteStorage/'  #Path to backup folder location
     app_folders:
       - { name: 'icloud', dst_path: 'icloud', src_path: '~/Library/Mobile Documents/com~apple~CloudDocs/' }  #Default path to icloud data folder location
       - { name: 'iphoto', dst_path: 'iphoto', src_path: '~/Pictures' }  #Default path to iphoto folder location
